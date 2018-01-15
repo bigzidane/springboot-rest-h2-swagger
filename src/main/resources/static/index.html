@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel = "stylesheet" href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+        <script src="calTrackingApp.js"></script>    
+    </head>
+
+    <div ng-controller="CalTrackingCtrl as ctrl" layout="column" ng-cloak="" class="autocompletedemoBasicUsage" ng-app="CalTrackingApp">
+
+        <md-content layout-padding=""  md-theme="docs-dark" layout-gt-sm="row" >
+                <div>
+                    <form name="calTrackingForm" ng-submit="calTracking()" ng-controller="CalTrackingSubmitCtrl">
+            
+                    <div layout-gt-xs="row">
+                        
+                        
+                        <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" 
+                            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" 
+                            md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" 
+                            md-item-text="item.display" md-min-length="0" placeholder="Type to search your food">
+                
+                            <md-item-template>
+                                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                            </md-item-template>
+                            
+                            <md-not-found>
+                                No food matching "{{ctrl.searchText}}" were found.
+                            </md-not-found>
+                        </md-autocomplete>
+                        
+                    </div>
+                    
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs="">
+                        <label>Calories</label>
+                        <input ng-model="calories">
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs="">
+                        <md-button class="md-raised md-primary" type="submit">Track</md-button>
+                        </md-input-container>
+                    </div>
+
+                    </form>
+                </div>
+            
+        </md-content>            
+      </div>
+</html>
